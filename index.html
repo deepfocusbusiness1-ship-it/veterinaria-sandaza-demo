@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Veterinaria Sandaza | Santa Fe, Argentina</title>
+    
+    <!-- Meta tags SEO -->
+    <meta name="description" content="Atención médica veterinaria de excelencia en Santa Fe. Especialidades en Cardiología, Traumatología, Cirugía Compleja y Diagnóstico Digital. Veterinarios graduados de UNL y UAB Barcelona.">
+    <meta name="keywords" content="veterinaria sandaza, clinica veterinaria santa fe, veterinario cardiologia, veterinario general lopez, urgencias mascotas santa fe">
+    <meta name="author" content="Clínica Veterinaria Sandaza">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Lucide Icons (iconografía moderna) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- CURSOR PREMIUM PERSONALIZADO (Solo Escritorio) -->
+    <div id="custom-cursor" style="position: fixed; width: 20px; height: 20px; border: 2px solid var(--color-accent); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 10000; transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease; display: none;"></div>
+
+    <!-- 1. HEADER & NAVEGACIÓN -->
+    <header class="main-header" id="header">
+        <div class="container header-container">
+            <!-- Logo Recreado de la Recepción Real -->
+            <a href="#" class="logo-link">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon-svg">
+                    <rect width="200" height="200" rx="48" fill="#0B6655"/>
+                    <!-- Neon glow behind the plate -->
+                    <rect x="23" y="23" width="154" height="154" rx="22" fill="#FAF9F6" opacity="0.15" filter="blur(6px)"/>
+                    <!-- Square plate with exact cutout of dog silhouette from receptionist wall -->
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M 25 45 A 20 20 0 0 1 45 25 h 110 a 20 20 0 0 1 20 20 v 110 a 20 20 0 0 1 -20 20 h -110 a 20 20 0 0 1 -20 -20 z M 100 176 C 90 140 92 115 105 100 C 90 110 65 110 50 120 C 60 112 75 108 80 102 C 70 92 50 85 40 92 C 55 83 72 87 78 82 C 65 68 45 55 42 65 C 55 55 78 60 92 70 C 105 60 120 55 135 60 C 150 65 170 75 170 85 C 170 95 155 100 145 100 C 125 110 115 140 115 176 Z" fill="#FAF9F6"/>
+                    <!-- Solid circular eye floating inside cutout -->
+                    <circle cx="118" cy="88" r="7" fill="#FAF9F6"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-title">Sandaza</span>
+                    <span class="logo-subtitle">Medicina Animal</span>
+                </div>
+            </a>
+
+            <!-- Menú -->
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">Inicio</a>
+                <a href="#especialidades" class="nav-link">Especialidades</a>
+                <a href="#portal" class="nav-link">Mi Mascota</a>
+                <a href="#turnos" class="nav-link">Turnos</a>
+                <a href="#reseñas" class="nav-link">Reseñas</a>
+                <a href="#equipo" class="nav-link">Equipo</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+
+            <!-- Acciones -->
+            <div class="nav-actions">
+                <!-- Estado horario en vivo -->
+                <div class="status-badge open" id="live-status">
+                    <span class="status-dot"></span>
+                    <span id="live-status-text">Cargando...</span>
+                </div>
+                <a href="tel:03424581515" class="phone-btn">
+                    <i data-lucide="phone-call" style="width:16px;height:16px;"></i>
+                    <span>458-1515</span>
+                </a>
+                <!-- Botón Toggle Menú Mobile -->
+                <button class="menu-toggle" id="menu-toggle" aria-label="Abrir Menú">
+                    <i data-lucide="menu" style="width:24px;height:24px;"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <!-- Textos e Introducción -->
+            <div class="hero-info-area">
+                <div class="hero-tag">
+                    <i data-lucide="award" style="width:14px;height:14px;color:var(--color-accent)"></i>
+                    <span>Acreditación Internacional UNL - UAB España</span>
+                </div>
+                <h1 class="hero-title">Cuidado profesional con el <span>amor</span> que merecen.</h1>
+                <p class="hero-desc">En Clínica Veterinaria Sandaza combinamos tecnología médica de vanguardia con un trato profundamente empático, cuidando a tu mascota en cada etapa de su vida en Santa Fe.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#turnos" class="btn-gold">
+                        <span>Solicitar Turno</span>
+                        <i data-lucide="calendar" style="width:18px;height:18px;"></i>
+                    </a>
+                    <a href="#portal" class="btn-minimal">
+                        <span>Portal Mi Mascota</span>
+                        <i data-lucide="shield-check" style="width:18px;height:18px;"></i>
+                    </a>
+                </div>
+
+                <div class="hero-badges">
+                    <div class="hero-badge">
+                        <div class="hero-badge-icon"><i data-lucide="activity" style="width:18px;height:18px;"></i></div>
+                        <div class="hero-badge-text"><strong>+30K Seguidores</strong> en Instagram</div>
+                    </div>
+                    <div class="hero-badge">
+                        <div class="hero-badge-icon"><i data-lucide="star" style="width:18px;height:18px;fill:var(--color-accent);color:var(--color-accent)"></i></div>
+                        <div class="hero-badge-text"><strong>4.7 Calificación</strong> en Google Maps</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carrusel 3D Giratorio (Lado Derecho) -->
+            <div class="hero-carousel-wrapper" id="carousel-container-3d">
+                <div class="carousel-3d-scene" id="carousel-scene-3d">
+                    <!-- Tarjeta 1: Veterinarias y Beagle -->
+                    <div class="carousel-3d-card" style="--card-index: 0;">
+                        <div class="carousel-3d-card-inner">
+                            <div class="carousel-card-img-area">
+                                <img src="img/carrusel_cirugia.jpg" alt="Atención Familiar y Cercana - Nuestro Equipo" loading="eager">
+                            </div>
+                            <div class="carousel-card-info">
+                                <span class="carousel-card-tag">Nuestro Equipo</span>
+                                <h3 class="carousel-card-title">Atención Familiar y Cercana</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Puente Colgante de Santa Fe -->
+                    <div class="carousel-3d-card" style="--card-index: 1;">
+                        <div class="carousel-3d-card-inner">
+                            <div class="carousel-card-img-area">
+                                <img src="img/carrusel_puente.jpg" alt="Vínculo Local - Puente Colgante de Santa Fe" loading="eager">
+                            </div>
+                            <div class="carousel-card-info">
+                                <span class="carousel-card-tag">Santa Fe Capital</span>
+                                <h3 class="carousel-card-title">Comprometidos con la Comunidad</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3: Consulta Bulldog -->
+                    <div class="carousel-3d-card" style="--card-index: 2;">
+                        <div class="carousel-3d-card-inner">
+                            <div class="carousel-card-img-area">
+                                <img src="img/carrusel_bulldog.jpg" alt="Consultorio de Alta Complejidad - Cachorros Bulldog Francés" loading="eager">
+                            </div>
+                            <div class="carousel-card-info">
+                                <span class="carousel-card-tag">Atención Médica</span>
+                                <h3 class="carousel-card-title">Consultas de Alta Complejidad</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4: Cachorro Golden Retriever / Vets -->
+                    <div class="carousel-3d-card" style="--card-index: 3;">
+                        <div class="carousel-3d-card-inner">
+                            <div class="carousel-card-img-area">
+                                <img src="img/carrusel_sanbernardo.jpg" alt="Cuidado Especial para Cachorros - Cachorros Ovejero Alemán" loading="lazy">
+                            </div>
+                            <div class="carousel-card-info">
+                                <span class="carousel-card-tag">Amor Animal</span>
+                                <h3 class="carousel-card-title">Cuidado Especial para Cachorros</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 5: X-Ray & Tecnología / Staff -->
+                    <div class="carousel-3d-card" style="--card-index: 4;">
+                        <div class="carousel-3d-card-inner">
+                            <div class="carousel-card-img-area">
+                                <img src="img/carrusel_diagnostico.png" alt="Diagnóstico Digital Inmediato - Tecnología Médica" loading="lazy">
+                            </div>
+                            <div class="carousel-card-info">
+                                <span class="carousel-card-tag">Tecnología Médica</span>
+                                <h3 class="carousel-card-title">Diagnóstico Digital Inmediato</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones navegación carrusel -->
+                <div class="carousel-nav-controls">
+                    <button class="carousel-btn" id="carousel-prev" aria-label="Anterior">
+                        <i data-lucide="arrow-left" style="width:18px;height:18px;"></i>
+                    </button>
+                    <button class="carousel-btn" id="carousel-next" aria-label="Siguiente">
+                        <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TARJETAS DE ACCESO RÁPIDO -->
+    <section class="quick-actions-section">
+        <div class="container quick-actions-grid">
+            <!-- Tarjeta 1: Solicitar Turno -->
+            <div class="quick-card reveal">
+                <div class="quick-icon-wrapper">
+                    <i data-lucide="calendar-plus" style="width:28px;height:28px;"></i>
+                </div>
+                <h3 class="quick-card-title">Reserva de Turnos</h3>
+                <p class="quick-card-desc">Elige el especialista, la fecha y el horario de forma cómoda y sin esperas telefónicas.</p>
+                <a href="#turnos" class="quick-card-link">
+                    <span>Solicitar online</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px;"></i>
+                </a>
+            </div>
+
+            <!-- Tarjeta 2: Portal Mi Mascota -->
+            <div class="quick-card reveal" style="transition-delay: 0.1s;">
+                <div class="quick-icon-wrapper">
+                    <i data-lucide="folder-heart" style="width:28px;height:28px;"></i>
+                </div>
+                <h3 class="quick-card-title">Portal Mi Mascota</h3>
+                <p class="quick-card-desc">Genera una credencial 3D interactiva para tu mascota y accede a su calendario inteligente de salud.</p>
+                <a href="#portal" class="quick-card-link">
+                    <span>Acceder al portal</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px;"></i>
+                </a>
+            </div>
+
+            <!-- Tarjeta 3: Urgencias Médicas -->
+            <div class="quick-card emergency reveal" style="transition-delay: 0.2s;">
+                <div class="quick-icon-wrapper">
+                    <i data-lucide="shield-alert" style="width:28px;height:28px;"></i>
+                </div>
+                <h3 class="quick-card-title">Urgencias y Guardia</h3>
+                <p class="quick-card-desc">Llama directamente o consulta nuestro protocolo para recibir atención prioritaria inmediata.</p>
+                <a href="tel:03424581515" class="quick-card-link">
+                    <span>Llamar ahora</span>
+                    <i data-lucide="phone" style="width:16px;height:16px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SHOWROOM 3D PINZADO (ESPECIALIDADES CLINICAS) -->
+    <section class="showroom-pin-container" id="especialidades">
+        <div class="showroom-content-wrapper">
+            <div class="container showroom-grid">
+                
+                <!-- Lado Izquierdo: Textos Desplazables Dinámicamente por Scroll -->
+                <div class="showroom-info-panel">
+                    
+                    <!-- Slide 1: Cardiología -->
+                    <div class="showroom-slide-text active" id="text-slide-0">
+                        <span class="section-tag">Especialidad Destacada</span>
+                        <h2 class="showroom-slide-title">Cardiología y Cirugía Compleja</h2>
+                        <p class="showroom-slide-desc">Atención médica cardiovascular especializada de nivel internacional. Coordinado por profesionales formados en la Universidad Autónoma de Barcelona (UAB), brindamos diagnósticos precisos para cardiopatías congénitas y adquiridas.</p>
+                        <ul class="showroom-bullet-list">
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Electrocardiogramas en vivo</li>
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Monitoreo pre-quirúrgico</li>
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Cirugías de tórax asistidas</li>
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Terapias farmacológicas</li>
+                        </ul>
+                        <a href="#turnos" class="btn-gold">Consultar Especialista</a>
+                    </div>
+
+                    <!-- Slide 2: Diagnóstico Digital -->
+                    <div class="showroom-slide-text" id="text-slide-1">
+                        <span class="section-tag">Tecnología Médica</span>
+                        <h2 class="showroom-slide-title">Diagnóstico Digital por Imágenes</h2>
+                        <p class="showroom-slide-desc">Contamos con equipamiento de radiología digital de alta resolución y ecografía doppler color de última generación. Resultados inmediatos que permiten tomar decisiones terapéuticas críticas al instante.</p>
+                        <ul class="showroom-bullet-list">
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Ecografía Doppler Color</li>
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Radiografía Digital Instantánea</li>
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Informes clínicos archivados</li>
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Ecocardio de precisión</li>
+                        </ul>
+                        <a href="#turnos" class="btn-gold">Agendar Ecografía</a>
+                    </div>
+
+                    <!-- Slide 3: Guardia & Internación -->
+                    <div class="showroom-slide-text" id="text-slide-2">
+                        <span class="section-tag">Cuidado Continuo</span>
+                        <h2 class="showroom-slide-title">Guardia de Emergencia e Internación</h2>
+                        <p class="showroom-slide-desc">Nuestras áreas de internación y monitoreo clínico brindan a tu mascota el confort y la seguridad que necesita en procesos postoperatorios o cuadros agudos, bajo la atenta mirada de nuestro equipo médico.</p>
+                        <ul class="showroom-bullet-list">
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Hospitalización climatizada</li>
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Monitoreo multiparamétrico</li>
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Oxigenoterapia controlada</li>
+                            <li class="showroom-bullet"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> Atención médica de urgencia</li>
+                        </ul>
+                        <a href="tel:03424581515" class="btn-gold" style="background-color:var(--color-error);color:white;box-shadow:none;border:none;">Llamar Guardia</a>
+                    </div>
+
+                </div>
+
+                <!-- Lado Derecho: Tarjeta 3D que Rota 180° en el Eje Y según Scroll -->
+                <div class="showroom-visual-panel">
+                    <div class="showroom-3d-card-wrapper">
+                        <div class="showroom-3d-card" id="rotating-3d-card">
+                            
+                            <!-- Cara Frontal de la Tarjeta (Representa el Servicio Clínico) -->
+                            <div class="card-face card-face-front">
+                                <div class="showroom-card-img" id="showroom-card-front-img">
+                                    <!-- Modificado dinámicamente con SVGs -->
+                                </div>
+                                <div class="showroom-card-body">
+                                    <div>
+                                        <span class="showroom-card-category" id="showroom-card-front-category">Cardiología</span>
+                                        <h3 class="showroom-card-title" id="showroom-card-front-title">Monitoreo Cardiovascular</h3>
+                                    </div>
+                                    <div class="showroom-card-prompt">
+                                        <i data-lucide="rotate-3d" style="width:16px;height:16px;color:var(--color-accent)"></i>
+                                        <span>Sigue desplazándote para ver detalles</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cara Posterior de la Tarjeta (Muestra Detalles Técnicos) -->
+                            <div class="card-face card-face-back">
+                                <div class="back-header">
+                                    <div>
+                                        <span class="showroom-card-category" style="color:var(--color-accent)">Ficha Técnica</span>
+                                        <h3 class="back-title" id="showroom-card-back-title">Ubicación UAB</h3>
+                                    </div>
+                                    <i data-lucide="stethoscope" style="width:32px;height:32px;color:var(--color-accent)"></i>
+                                </div>
+                                <div class="back-body-info">
+                                    <div class="back-stat-row">
+                                        <span>Profesionales a cargo</span>
+                                        <span id="showroom-stat-vets">Dra. Sandaza / Dr. Rossi</span>
+                                    </div>
+                                    <div class="back-stat-row">
+                                        <span>Acreditación Médica</span>
+                                        <span id="showroom-stat-acred">UAB España</span>
+                                    </div>
+                                    <div class="back-stat-row">
+                                        <span>Tiempo de Entrega</span>
+                                        <span id="showroom-stat-time">Inmediato / En vivo</span>
+                                    </div>
+                                </div>
+                                <div class="back-footer">
+                                    <i data-lucide="info" style="width:16px;height:16px;"></i>
+                                    <span>Garantía de excelencia clínica</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Indicadores visuales inferiores -->
+        <div class="showroom-indicators">
+            <span class="indicator-dot active" id="dot-0"></span>
+            <span class="indicator-dot" id="dot-1"></span>
+            <span class="indicator-dot" id="dot-2"></span>
+        </div>
+    </section>
+
+    <!-- 5. PORTAL "MI MASCOTA" (INTERACTIVO) -->
+    <section class="pet-portal-section section-padding" id="portal">
+        <div class="container">
+            <div class="section-title-wrapper reveal">
+                <span class="section-tag">Portal Web Interactivo</span>
+                <h2 class="section-title">Portal Digital "Mi Mascota"</h2>
+                <p class="section-subtitle">Registra los datos de tu compañero de vida, obtén su credencial 3D de salud y recibe un plan médico y consejos adaptados dinámicamente.</p>
+            </div>
+
+            <div class="pet-portal-grid">
+                <!-- Formulario de Registro -->
+                <div class="pet-portal-card reveal">
+                    <form id="pet-register-form">
+                        <div class="form-group">
+                            <label class="form-label" for="pet-name">Nombre de la Mascota</label>
+                            <input class="form-input" type="text" id="pet-name" placeholder="Ej. Toby, Luna" required>
+                        </div>
+                        <div class="form-select-group">
+                            <div class="form-group">
+                                <label class="form-label" for="pet-type">Tipo de Animal</label>
+                                <select class="form-input" id="pet-type" required>
+                                    <option value="perro">Perro</option>
+                                    <option value="gato">Gato</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="pet-age">Edad (Años)</label>
+                                <input class="form-input" type="number" id="pet-age" min="0" max="30" placeholder="Ej. 2" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="pet-breed">Raza / Tipo</label>
+                            <input class="form-input" type="text" id="pet-breed" placeholder="Ej. Caniche, Mestizo, Siamés" required>
+                        </div>
+                        <button class="btn-gold" type="submit" style="width: 100%; justify-content: center; margin-top: 10px;">
+                            <span>Generar Credencial de Salud</span>
+                            <i data-lucide="shield-check" style="width:18px;height:18px;"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Credencial Interactiva 3D (Tilt Card) -->
+                <div class="pet-badge-wrapper reveal">
+                    <div class="pet-id-badge" id="pet-3d-badge">
+                        <div class="badge-header">
+                            <span class="badge-clinic-name">Sandaza Vet</span>
+                            <div class="badge-chip"></div>
+                        </div>
+                        
+                        <div class="badge-photo-area" id="badge-photo">
+                            <i data-lucide="dog" id="badge-default-icon"></i>
+                        </div>
+                        
+                        <h3 class="badge-pet-name" id="badge-name">Mascota</h3>
+                        <p class="badge-pet-details" id="badge-details">Tipo: <span>Perro</span> | Edad: <span>-</span></p>
+                        
+                        <div class="badge-footer">
+                            <span class="badge-code" id="badge-id-code">ID-000000</span>
+                            <!-- SVG Watermark Logo -->
+                            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="badge-logo-watermark">
+                                <rect width="200" height="200" rx="48" fill="#D4AF37" opacity="0.1"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M 25 45 A 20 20 0 0 1 45 25 h 110 a 20 20 0 0 1 20 20 v 110 a 20 20 0 0 1 -20 20 h -110 a 20 20 0 0 1 -20 -20 z M 100 176 C 90 140 92 115 105 100 C 90 110 65 110 50 120 C 60 112 75 108 80 102 C 70 92 50 85 40 92 C 55 83 72 87 78 82 C 65 68 45 55 42 65 C 55 55 78 60 92 70 C 105 60 120 55 135 60 C 150 65 170 75 170 85 C 170 95 155 100 145 100 C 125 110 115 140 115 176 Z" fill="#D4AF37" opacity="0.3"/>
+                                <circle cx="118" cy="88" r="7" fill="#D4AF37" opacity="0.3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Dashboard: Calendario y consejos inteligentes (Se revelan por JS al registrar) -->
+            <div class="pet-health-dashboard" id="health-dashboard">
+                <h3 class="health-title">
+                    <i data-lucide="activity" style="width:22px;height:22px;color:var(--color-primary)"></i>
+                    <span>Plan de Salud Inteligente para <span id="health-pet-name" style="color:var(--color-primary); font-weight:700;"></span></span>
+                </h3>
+                <ul class="health-task-list" id="health-tasks">
+                    <!-- Rellenado dinámicamente por JS -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SIMULADOR DE TURNOS -->
+    <section class="booking-section section-padding" id="turnos">
+        <div class="container">
+            <div class="section-title-wrapper reveal">
+                <span class="section-tag">Agenda Médica</span>
+                <h2 class="section-title">Reserva tu Turno en Línea</h2>
+                <p class="section-subtitle">Evita demoras telefónicas. Pre-reserva el turno para tu mascota de forma simple y te enviaremos una confirmación de prioridad.</p>
+            </div>
+
+            <div class="booking-grid">
+                <!-- Formulario -->
+                <div class="booking-form-card reveal">
+                    <form id="booking-form">
+                        <div class="booking-form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="book-owner">Tu Nombre Completo</label>
+                                <input class="form-input" type="text" id="book-owner" placeholder="Ej. Juan Pérez" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="book-phone">Teléfono de Contacto</label>
+                                <input class="form-input" type="tel" id="book-phone" placeholder="Ej. 342 123456" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="book-pet">Nombre de la Mascota</label>
+                                <input class="form-input" type="text" id="book-pet" placeholder="Ej. Bobby" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="book-specialty">Especialidad Requerida</label>
+                                <select class="form-input" id="book-specialty" required>
+                                    <option value="Clínica General">Consulta General</option>
+                                    <option value="Cardiología">Cardiología Veterinaria</option>
+                                    <option value="Diagnóstico Digital">Ecografía / Radiología</option>
+                                    <option value="Cirugía Compleja">Cirugía y Quirófano</option>
+                                    <option value="Estética Canina">Peluquería / Estética</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="book-date">Fecha Deseada</label>
+                                <input class="form-input" type="date" id="book-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="book-time">Rango Horario</label>
+                                <select class="form-input" id="book-time" required>
+                                    <option value="Mañana (08:00 - 12:00)">Mañana (08:00 - 12:00)</option>
+                                    <option value="Tarde (12:00 - 16:00)">Tarde (12:00 - 16:00)</option>
+                                    <option value="Tarde-Noche (16:00 - 19:00)">Tarde-Noche (16:00 - 19:00)</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label class="form-label" for="book-notes">Notas Clínicas o Síntomas (Opcional)</label>
+                                <textarea class="form-input" id="book-notes" rows="3" placeholder="Describe brevemente el motivo de la consulta..." style="resize:none;"></textarea>
+                            </div>
+                        </div>
+                        <button class="btn-gold" type="submit" style="width:100%; justify-content:center; margin-top:10px;">
+                            <span>Confirmar Pre-Reserva</span>
+                            <i data-lucide="check" style="width:18px;height:18px;"></i>
+                        </button>
+                    </form>
+
+                    <!-- Ticket de confirmación animado -->
+                    <div class="booking-confirmation-modal" id="booking-modal">
+                        <h4 class="conf-title">
+                            <i data-lucide="sparkles" style="color:var(--color-accent)"></i>
+                            <span>Pre-Reserva Confirmada</span>
+                        </h4>
+                        <p class="conf-details">Tu solicitud de turno ha sido procesada con éxito. En breve un coordinador de la clínica se comunicará contigo al teléfono provisto para ratificar el horario exacto.</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <span style="font-size:0.75rem; text-transform:uppercase; color:var(--color-text-light); font-weight:700; display:block;">Código de Prioridad</span>
+                                <span class="conf-code-box" id="conf-order-code">SND-9876</span>
+                            </div>
+                            <i data-lucide="qr-code" style="width:48px;height:48px;color:var(--color-primary-dark)"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info lateral -->
+                <div class="booking-info-block reveal">
+                    <span class="section-tag" style="background:rgba(255,255,255,0.7)">Atención Prioritaria</span>
+                    <h3 style="font-size:2.2rem; color:var(--color-primary-dark); margin-bottom:24px; line-height:1.2;">¿Por qué reservar en línea?</h3>
+                    
+                    <div class="booking-benefit-card">
+                        <div class="booking-benefit-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
+                        <div>
+                            <h4 class="booking-benefit-title">Ahorro de Tiempo</h4>
+                            <p class="booking-benefit-desc">El portal asigna de forma directa las franjas horarias libres de nuestros cardiólogos y cirujanos.</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-benefit-card">
+                        <div class="booking-benefit-icon"><i data-lucide="history" style="width:20px;height:20px;"></i></div>
+                        <div>
+                            <h4 class="booking-benefit-title">Historial Integrado</h4>
+                            <p class="booking-benefit-desc">Los turnos se vinculan de forma directa con la credencial digital de tu mascota en nuestro sistema.</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-benefit-card">
+                        <div class="booking-benefit-icon"><i data-lucide="shield-check" style="width:20px;height:20px;"></i></div>
+                        <div>
+                            <h4 class="booking-benefit-title">Coordinación de Emergencias</h4>
+                            <p class="booking-benefit-desc">Si es un caso de urgencia, al finalizar el formulario el sistema te guiará directamente con el personal de guardia activa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SECCIÓN DE RESEÑAS -->
+    <section class="reviews-section section-padding" id="reseñas">
+        <div class="container">
+            <div class="reviews-header-block reveal">
+                <div>
+                    <span class="section-tag">Opinión de la Comunidad</span>
+                    <h2 class="section-title" style="margin-bottom:0;">La confianza de Santa Fe</h2>
+                </div>
+                
+                <div class="reviews-stat-card">
+                    <span class="reviews-big-number" id="average-stars-num">4.7</span>
+                    <div class="reviews-stars-group">
+                        <div class="stars-row" id="average-stars-display">
+                            <!-- Estrellas cargadas dinámicamente -->
+                        </div>
+                        <span class="reviews-total-text" id="total-reviews-count">Basado en +1,240 reseñas reales</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros de reseñas -->
+            <div class="reviews-header-block reveal" style="margin-bottom:32px;">
+                <div class="reviews-filter-bar" id="reviews-filters">
+                    <button class="filter-btn active" data-filter="all">Todas</button>
+                    <button class="filter-btn" data-filter="perro">Perros 🐶</button>
+                    <button class="filter-btn" data-filter="gato">Gatos 🐱</button>
+                    <button class="filter-btn" data-filter="cardiologia">Cardiología / Cirugía 🩺</button>
+                </div>
+            </div>
+
+            <!-- Grid de Reseñas -->
+            <div class="reviews-grid reveal" id="reviews-container">
+                <!-- Rellenado dinámicamente por JS con animaciones de carga -->
+            </div>
+
+            <!-- Módulo Guía de Cuidado Preventivo -->
+            <div class="care-tips-block reveal" id="guia-cuidado">
+                <h3 class="care-tips-title">Consejos y Cuidado Diario</h3>
+                <p class="care-tips-intro">Pequeños hábitos cotidianos que marcan una gran diferencia en la calidad de vida y longevidad de tu mascota.</p>
+                <div class="care-tips-grid">
+                    <!-- Tarjeta 1: Nutrición -->
+                    <div class="care-tip-card">
+                        <div>
+                            <div class="care-tip-icon">
+                                <i data-lucide="utensils"></i>
+                            </div>
+                            <h4 class="care-tip-heading">Nutrición Saludable</h4>
+                            <ul class="care-tip-list">
+                                <li><strong>Tóxicos domésticos:</strong> Evita estrictamente chocolate, cebolla, ajo, uvas y pasas. Pueden provocar fallas orgánicas graves.</li>
+                                <li><strong>Hidratación felina:</strong> Fomenta el consumo de agua usando fuentes giratorias para prevenir problemas renales en gatos.</li>
+                            </ul>
+                        </div>
+                        <div class="care-tip-drawing">
+                            <img src="img/cuidado_nutricion.png" alt="Nutrición Saludable" loading="lazy">
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Prevención -->
+                    <div class="care-tip-card">
+                        <div>
+                            <div class="care-tip-icon">
+                                <i data-lucide="shield-check"></i>
+                            </div>
+                            <h4 class="care-tip-heading">Prevención y Control</h4>
+                            <ul class="care-tip-list">
+                                <li><strong>Pipetas y Parásitos:</strong> Aplica de forma regular pipetas o comprimidos mensuales contra pulgas y garrapatas.</li>
+                                <li><strong>Refuerzos Anuales:</strong> Recuerda que las vacunas anuales protegen contra la Rabia, Parvovirus y Complejo Felino.</li>
+                            </ul>
+                        </div>
+                        <div class="care-tip-drawing">
+                            <img src="img/cuidado_prevencion.png" alt="Prevención y Control" loading="lazy">
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3: Estimulación -->
+                    <div class="care-tip-card">
+                        <div>
+                            <div class="care-tip-icon">
+                                <i data-lucide="heart"></i>
+                            </div>
+                            <h4 class="care-tip-heading">Bienestar Mental</h4>
+                            <ul class="care-tip-list">
+                                <li><strong>Paseo de Olfato:</strong> Deja que tu perro olfatee en sus paseos cotidianos; esto reduce su ansiedad y fatiga mental.</li>
+                                <li><strong>Rascadores Altos:</strong> Coloca rascadores verticales y repisas altas para que tus gatos se sientan seguros y activos.</li>
+                            </ul>
+                        </div>
+                        <div class="care-tip-drawing">
+                            <img src="img/cuidado_bienestar.png" alt="Bienestar Mental" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. SECCIÓN DE EQUIPO -->
+    <section class="team-section section-padding" id="equipo">
+        <div class="container">
+            <div class="section-title-wrapper reveal">
+                <span class="section-tag">Nuestros Profesionales</span>
+                <h2 class="section-title">Médicos Veterinarios de Confianza</h2>
+                <p class="section-subtitle">Profesionales altamente capacitados en prestigiosas universidades nacionales e internacionales, garantizando diagnósticos certeros.</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Profesional 1 -->
+                <div class="team-card reveal">
+                    <div class="team-member-img">
+                        <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="400" fill="#0B6655"/>
+                            <circle cx="150" cy="150" r="70" fill="white" opacity="0.1"/>
+                            <!-- Vet female vector silhouette -->
+                            <path d="M150 110 C165 110 175 125 175 140 C175 160 150 185 150 185 C150 185 125 160 125 140 C125 125 135 110 150 110 Z" fill="#D4AF37"/>
+                            <path d="M100 320 C100 240 200 240 200 320 Z" fill="white" opacity="0.2"/>
+                            <!-- Stethoscope design overlay -->
+                            <path d="M130 190 Q150 205 170 190" stroke="#FAF9F6" stroke-width="3" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">Dra. Clara Sandaza</h3>
+                        <span class="team-member-role">Directora Médica & Cirugía</span>
+                        <p class="team-member-degree">Graduada de la **UNL (Univ. Nac. del Litoral)** y especialista posgrado por la **UAB (Universidad Autónoma de Barcelona)**, España.</p>
+                    </div>
+                </div>
+
+                <!-- Profesional 2 -->
+                <div class="team-card reveal" style="transition-delay: 0.1s;">
+                    <div class="team-member-img">
+                        <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="400" fill="#07473B"/>
+                            <circle cx="150" cy="150" r="70" fill="white" opacity="0.1"/>
+                            <!-- Vet male vector silhouette -->
+                            <path d="M150 110 C165 110 175 125 175 140 C175 160 150 185 150 185 C150 185 125 160 125 140 C125 125 135 110 150 110 Z" fill="#D4AF37"/>
+                            <path d="M90 320 C90 250 210 250 210 320 Z" fill="white" opacity="0.2"/>
+                        </svg>
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">Dr. Francisco Sandaza</h3>
+                        <span class="team-member-role">Especialista en Diagnóstico Digital</span>
+                        <p class="team-member-degree">Graduado de la **UNL** en Medicina de Pequeños Animales, experto en Radiología Digital e Imagenología Doppler Avanzada.</p>
+                    </div>
+                </div>
+
+                <!-- Profesional 3 -->
+                <div class="team-card reveal" style="transition-delay: 0.2s;">
+                    <div class="team-member-img">
+                        <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="400" fill="#0B6655"/>
+                            <circle cx="150" cy="150" r="70" fill="white" opacity="0.1"/>
+                            <!-- Vet assistant vector silhouette -->
+                            <path d="M150 110 C165 110 175 125 175 140 C175 160 150 185 150 185 C150 185 125 160 125 140 C125 125 135 110 150 110 Z" fill="#D4AF37"/>
+                            <path d="M100 320 C100 240 200 240 200 320 Z" fill="white" opacity="0.2"/>
+                        </svg>
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">Dra. Sofía Rossi</h3>
+                        <span class="team-member-role">Cardiología Veterinaria</span>
+                        <p class="team-member-degree">Veterinaria egresada de la **UNL** con residencia clínica especializada en arritmias y cardiomiopatías felinas/caninas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. SECCIÓN CONTACTO Y MAPA -->
+    <section class="contact-section section-padding" id="contacto">
+        <div class="container contact-grid">
+            <!-- Info de Contacto -->
+            <div class="contact-info-panel reveal">
+                <span class="section-tag">¿Dónde encontrarnos?</span>
+                <h2 class="section-title">Ubicación y Atención</h2>
+                <p class="section-subtitle" style="margin:0 0 40px 0;">Nuestra clínica está ubicada en una de las avenidas más emblemáticas de Santa Fe Capital, con fácil acceso y estacionamiento.</p>
+                
+                <div class="contact-item">
+                    <div class="contact-icon"><i data-lucide="map-pin" style="width:22px;height:22px;"></i></div>
+                    <div>
+                        <h4 class="contact-item-title">Dirección Principal</h4>
+                        <p class="contact-item-value">Avenida General López 2957, Santa Fe, Argentina.</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i data-lucide="clock" style="width:22px;height:22px;"></i></div>
+                    <div>
+                        <h4 class="contact-item-title">Horarios de Atención</h4>
+                        <p class="contact-item-value">Lunes a Sábado de 08:00 a 19:00 hs (Guardia pasiva telefónica fuera de horario).</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i data-lucide="phone-call" style="width:22px;height:22px;"></i></div>
+                    <div>
+                        <h4 class="contact-item-title">Teléfono e Informes</h4>
+                        <p class="contact-item-value">0342 458-1515 | Emergencias directas al mismo número.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mapa Real Integrado -->
+            <div class="map-container reveal">
+                <iframe src="https://maps.google.com/maps?q=Clinica%20Veterinaria%20Sandaza%20Santa%20Fe%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. FOOTER -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <!-- Marca -->
+            <div>
+                <h3 class="footer-brand-title">Veterinaria Sandaza</h3>
+                <p class="footer-brand-desc">Servicios veterinarios integrales de alta gama en Santa Fe Capital. Salud, tecnología y cuidado compasivo.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/veterinaria_sandaza/" target="_blank" class="social-link" aria-label="Instagram">
+                        <i data-lucide="instagram" style="width:18px;height:18px;"></i>
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank" class="social-link" aria-label="Facebook">
+                        <i data-lucide="facebook" style="width:18px;height:18px;"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Enlaces Rápidos -->
+            <div>
+                <h4 class="footer-column-title">Secciones</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#especialidades">Especialidades</a></li>
+                    <li><a href="#portal">Mi Mascota</a></li>
+                    <li><a href="#turnos">Reserva de Turnos</a></li>
+                </ul>
+            </div>
+
+            <!-- Servicios -->
+            <div>
+                <h4 class="footer-column-title">Servicios</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#especialidades">Cardiología</a></li>
+                    <li><a href="#especialidades">Ecografías 3D</a></li>
+                    <li><a href="#especialidades">Radiología Digital</a></li>
+                    <li><a href="#especialidades">Cirugía Compleja</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto Directo -->
+            <div>
+                <h4 class="footer-column-title">Santa Fe</h4>
+                <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin-bottom:12px;">Av. Gral. López 2957<br>Santa Fe capital, Argentina.</p>
+                <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); font-weight:700;"><i data-lucide="phone" style="width:14px;height:14px;display:inline;margin-right:6px;color:var(--color-accent);"></i>0342 458-1515</p>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <span>&copy; 2026 Clínica Veterinaria Sandaza. Todos los derechos reservados.</span>
+            <div class="footer-bottom-links">
+                <a href="#" style="color:rgba(255,255,255,0.4)">Aviso Legal</a>
+                <a href="#" style="color:rgba(255,255,255,0.4)">Política de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIBRERÍAS DE ANIMACIÓN Y SCROLL -->
+    <!-- 1. Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <!-- 2. GSAP Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- 3. GSAP ScrollTrigger Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Lógica del sitio web -->
+    <script src="app.js"></script>
+</body>
+</html>
