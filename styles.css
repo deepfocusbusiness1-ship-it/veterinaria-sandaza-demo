@@ -1898,25 +1898,53 @@ button {
 }
 
 @media (max-width: 768px) {
-    .header-container {
-        height: 70px;
+
+    /* === GLOBAL === */
+    .container {
+        padding: 0 16px;
     }
-    
+
+    .section-padding {
+        padding: 64px 0;
+    }
+
+    .section-title-wrapper {
+        margin-bottom: 40px;
+    }
+
+    .section-title {
+        font-size: 1.9rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    /* === HEADER === */
+    .header-container {
+        height: 64px;
+    }
+
+    .main-header.scrolled .header-container {
+        height: 60px;
+    }
+
     .menu-toggle {
         display: flex;
     }
-    
-    .nav-actions .phone-btn {
+
+    .nav-actions .phone-btn,
+    .nav-actions .status-badge {
         display: none;
     }
-    
+
     .nav-menu {
         display: none;
         position: fixed;
-        top: 70px;
+        top: 64px;
         left: 0;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 64px);
         background: rgba(250, 249, 246, 0.98);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
@@ -1928,70 +1956,410 @@ button {
         border-bottom: 1px solid rgba(11, 102, 85, 0.08);
         padding: 40px;
     }
-    
+
     .nav-menu.open {
         display: flex;
         animation: fadeIn 0.3s ease forwards;
     }
-    
+
+    .nav-link {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    /* === HERO === */
+    .hero-section {
+        padding-top: 100px;
+        padding-bottom: 60px;
+        min-height: auto;
+    }
+
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 32px;
     }
-    
-    .hero-carousel-wrapper {
-        height: 380px;
+
+    .hero-title {
+        font-size: 2.6rem;
+        letter-spacing: -1px;
     }
-    
+
     .hero-desc {
-        margin: 0 auto 30px auto;
+        font-size: 1rem;
+        margin: 0 auto 28px auto;
+        max-width: 480px;
     }
-    
+
     .hero-buttons {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
     }
-    
+
     .hero-badges {
         justify-content: center;
         flex-wrap: wrap;
+        gap: 16px;
     }
-    
-    .pet-portal-grid, .booking-grid {
+
+    .hero-tag {
+        margin-bottom: 16px;
+    }
+
+    .hero-carousel-wrapper {
+        height: 340px;
+    }
+
+    /* === QUICK ACTIONS === */
+    .quick-actions-section {
+        margin-top: -20px;
+    }
+
+    .quick-actions-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .quick-card {
+        padding: 24px;
+    }
+
+    .quick-icon-wrapper {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 16px;
+    }
+
+    /* === SHOWROOM === */
+    .showroom-slide-title {
+        font-size: 1.9rem;
+    }
+
+    .showroom-slide-desc {
+        font-size: 1rem;
+    }
+
+    .showroom-bullet-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .showroom-3d-card-wrapper {
+        width: 280px;
+        height: 370px;
+    }
+
+    /* === PET PORTAL === */
+    .pet-portal-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .pet-portal-card {
+        padding: 24px;
+    }
+
+    .form-select-group {
         grid-template-columns: 1fr;
     }
-    
+
+    .pet-id-badge {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        padding: 28px;
+    }
+
+    .badge-pet-name {
+        font-size: 1.8rem;
+    }
+
+    /* === BOOKING === */
+    .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .booking-form-card {
+        padding: 24px;
+    }
+
     .booking-form-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .booking-form-grid .form-group.full-width {
         grid-column: span 1;
     }
-    
+
+    .booking-info-block {
+        padding-left: 0;
+    }
+
+    /* === CARE TIPS === */
+    .care-tips-block {
+        padding: 44px 20px;
+    }
+
+    .care-tips-title {
+        font-size: 1.8rem;
+    }
+
+    .care-tip-card {
+        min-height: auto;
+        padding: 28px 22px;
+    }
+
+    /* === REVIEWS === */
     .reviews-header-block {
         flex-direction: column;
         align-items: center;
         gap: 20px;
         text-align: center;
     }
-    
+
     .reviews-filter-bar {
         flex-wrap: wrap;
         justify-content: center;
     }
-    
-    .reviews-grid, .team-grid {
+
+    .reviews-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .review-card {
+        flex: none;
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* === TEAM === */
+    .team-grid {
         grid-template-columns: 1fr;
     }
-    
+
+    .team-member-img {
+        height: 240px;
+    }
+
+    /* === CONTACT === */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .map-container {
+        height: 280px;
+    }
+
+    /* === FOOTER === */
+    .main-footer {
+        padding: 56px 0 24px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-bottom: 40px;
+    }
+
+    .footer-grid > *:first-child {
+        grid-column: span 2;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .footer-bottom-links {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* =====================================================
+   MÓVIL PEQUEÑO (≤ 480px)
+   ===================================================== */
+@media (max-width: 480px) {
+
+    /* === GLOBAL === */
+    .container {
+        padding: 0 14px;
+    }
+
+    .section-padding {
+        padding: 52px 0;
+    }
+
+    .section-title {
+        font-size: 1.65rem;
+    }
+
+    .btn-gold,
+    .btn-minimal {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+    }
+
+    /* === HERO === */
+    .hero-section {
+        padding-top: 88px;
+        padding-bottom: 48px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        letter-spacing: -0.5px;
+    }
+
+    .hero-desc {
+        font-size: 0.95rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .hero-buttons .btn-gold,
+    .hero-buttons .btn-minimal {
+        text-align: center;
+    }
+
+    .hero-badges {
+        gap: 12px;
+    }
+
+    .hero-badge-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* === CAROUSEL === */
+    .hero-carousel-wrapper {
+        height: 300px;
+    }
+
+    .carousel-3d-card {
+        width: 200px;
+    }
+
+    /* === QUICK ACTIONS === */
+    .quick-actions-section {
+        margin-top: -10px;
+    }
+
+    .quick-card {
+        padding: 20px;
+    }
+
+    .quick-card-title {
+        font-size: 1.15rem;
+    }
+
+    /* === SHOWROOM === */
+    .showroom-slide-title {
+        font-size: 1.6rem;
+    }
+
+    .showroom-3d-card-wrapper {
+        width: 240px;
+        height: 320px;
+    }
+
+    /* === PET PORTAL === */
+    .pet-portal-card {
+        padding: 20px;
+    }
+
+    .pet-id-badge {
+        max-width: 280px;
+        padding: 22px;
+    }
+
+    .badge-photo-area {
+        width: 100px;
+        height: 100px;
+    }
+
+    .badge-pet-name {
+        font-size: 1.5rem;
+    }
+
+    /* === BOOKING === */
+    .booking-form-card {
+        padding: 20px;
+    }
+
+    /* === CARE TIPS === */
+    .care-tips-block {
+        border-radius: var(--border-radius-md);
+        padding: 36px 16px;
+    }
+
+    .care-tips-title {
+        font-size: 1.5rem;
+    }
+
+    .care-tips-intro {
+        font-size: 0.95rem;
+    }
+
+    .care-tip-card {
+        padding: 22px 18px;
+    }
+
+    /* === REVIEWS === */
+    .review-card {
+        padding: 22px;
+    }
+
+    .reviews-big-number {
+        font-size: 2.6rem;
+    }
+
+    /* === TEAM === */
+    .team-member-img {
+        height: 200px;
+    }
+
+    /* === CONTACT === */
+    .map-container {
+        height: 240px;
+    }
+
+    .contact-item {
+        gap: 12px;
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* === FOOTER === */
     .footer-grid {
         grid-template-columns: 1fr;
     }
-    
-    .footer-bottom {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
+
+    .footer-grid > *:first-child {
+        grid-column: span 1;
+    }
+
+    .footer-brand-desc {
+        max-width: 100%;
+    }
+
+    .main-footer {
+        padding: 48px 0 20px;
     }
 }
 
