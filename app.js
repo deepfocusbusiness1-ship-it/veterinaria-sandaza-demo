@@ -385,11 +385,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
-            // 2. MÓVIL/TABLET (<= 1024px): Carrusel Cíclico Automático con Tap-to-Flip
+            // 2. MÓVIL/TABLET (<= 1024px): Carrusel Cíclico Limpio con Tap-to-Flip
             mm.add("(max-width: 1024px)", () => {
                 let activeIndex = 0;
-                let isFlipped = false;
-                
+                let tapFlipped = false;
+                let isCycling = false;
+
+                // Asegurar punto de partida limpio
+                gsap.set(rotatingCard, { rotateY: 0 });
+
                 // Función para actualizar el contenido de la tarjeta
                 const updateCardContent = (index) => {
                     cardFrontImg.innerHTML = showroomSVGs[index];
@@ -401,36 +405,48 @@ document.addEventListener('DOMContentLoaded', () => {
                     statTime.innerText = slideData[index].time;
                 };
 
-                // Ciclo automático sutil
+                // Ciclo automático limpio: siempre empieza y termina en rotateY 0
                 const autoCycle = () => {
-                    // Voltear la tarjeta a 180 (o 360 si ya está volteada) y cambiar de cara
+                    if (isCycling) return;
+                    isCycling = true;
+
+                    // Paso 1: girar hacia atrás (mostrar back face)
                     gsap.to(rotatingCard, {
-                        rotateY: isFlipped ? 360 : 180,
-                        duration: 0.6,
+                        rotateY: 180,
+                        duration: 0.55,
+                        ease: 'power2.inOut',
                         onComplete: () => {
-                            isFlipped = !isFlipped;
+                            // Paso 2: avanzar contenido mientras el back está visible
                             activeIndex = (activeIndex + 1) % 3;
                             updateCardContent(activeIndex);
-                            
-                            // Volver a la cara frontal
+
+                            // Paso 3: continuar la rotación hasta 360 (vuelve a front)
                             gsap.to(rotatingCard, {
-                                rotateY: isFlipped ? 180 : 0,
-                                duration: 0.6
+                                rotateY: 360,
+                                duration: 0.55,
+                                delay: 0.35,
+                                ease: 'power2.inOut',
+                                onComplete: () => {
+                                    // Resetear a 0 instantáneamente para el próximo ciclo
+                                    gsap.set(rotatingCard, { rotateY: 0 });
+                                    tapFlipped = false;
+                                    isCycling = false;
+                                }
                             });
                         }
                     });
                 };
-                
-                let cycleInterval = setInterval(autoCycle, 4000);
 
-                // Tap manual para voltear
+                let cycleInterval = setInterval(autoCycle, 4500);
+
+                // Tap manual para voltear (detiene el ciclo automático)
                 const handleTap = () => {
-                    // Detener el ciclo automático para que el usuario pueda leer
+                    if (isCycling) return;
                     clearInterval(cycleInterval);
-                    isFlipped = !isFlipped;
+                    tapFlipped = !tapFlipped;
                     gsap.to(rotatingCard, {
-                        rotateY: isFlipped ? 180 : 0,
-                        duration: 0.6,
+                        rotateY: tapFlipped ? 180 : 0,
+                        duration: 0.55,
                         ease: 'power2.out'
                     });
                 };
@@ -442,6 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearInterval(cycleInterval);
                     rotatingCard.removeEventListener('click', handleTap);
                     gsap.set(rotatingCard, { clearProps: "all" });
+                    isCycling = false;
                 };
             });
 

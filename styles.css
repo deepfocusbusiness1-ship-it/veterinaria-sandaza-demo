@@ -2067,8 +2067,33 @@ button {
     }
 
     .showroom-3d-card-wrapper {
-        width: 280px;
-        height: 370px;
+        width: 300px;
+        height: 400px;
+    }
+
+    .showroom-card-body {
+        padding: 20px;
+    }
+
+    .showroom-card-title {
+        font-size: 1.25rem;
+    }
+
+    .card-face-back {
+        padding: 24px;
+    }
+
+    .back-title {
+        font-size: 1.4rem;
+    }
+
+    .back-stat-row {
+        font-size: 0.85rem;
+        padding: 9px 0;
+    }
+
+    .back-footer {
+        font-size: 0.8rem;
     }
 
     /* === PET PORTAL === */
@@ -2293,8 +2318,25 @@ button {
     }
 
     .showroom-3d-card-wrapper {
-        width: 240px;
-        height: 320px;
+        width: 280px;
+        height: 370px;
+    }
+
+    .showroom-card-body {
+        padding: 16px;
+    }
+
+    .card-face-back {
+        padding: 20px;
+    }
+
+    .back-title {
+        font-size: 1.2rem;
+    }
+
+    .back-stat-row {
+        font-size: 0.8rem;
+        padding: 7px 0;
     }
 
     /* === PET PORTAL === */
