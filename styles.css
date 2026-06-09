@@ -223,22 +223,25 @@ button {
     height: 70px;
 }
 
-/* Logo SVG */
+/* Logo */
 .logo-link {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.logo-icon-svg {
-    width: 48px;
+.logo-icon-img {
     height: 48px;
-    filter: drop-shadow(0 4px 10px rgba(11, 102, 85, 0.15));
+    width: auto;
+    border-radius: 10px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(11, 102, 85, 0.2));
     transition: var(--transition-smooth);
 }
 
-.logo-link:hover .logo-icon-svg {
-    transform: rotate(5deg) scale(1.05);
+.logo-link:hover .logo-icon-img {
+    transform: scale(1.06);
+    filter: drop-shadow(0 6px 14px rgba(11, 102, 85, 0.3));
 }
 
 .logo-text {
