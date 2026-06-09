@@ -4,8 +4,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Lucide Icons initialization
-    lucide.createIcons();
+    // Robust helper for Lucide Icons
+    function safeCreateIcons() {
+        try {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        } catch (e) {
+            console.warn("Lucide no pudo inicializar iconos:", e);
+        }
+    }
+    
+    // Initial call
+    safeCreateIcons();
 
     // 1. DETECCIÓN DE DISPOSITIVOS TÁCTILES Y SOPORTE DE LIBRERÍAS
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches;
@@ -211,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // 5. SHOWROOM CLINICO 3D PINZADO (GSAP ScrollTrigger)
+    // 5. SHOWROOM CLINICO 3D PINZADO (GSAP ScrollTrigger & matchMedia)
     if (hasGSAP && hasScrollTrigger) {
         try {
             // Contenido vectorial para las caras de las tarjetas
@@ -286,96 +297,152 @@ document.addEventListener('DOMContentLoaded', () => {
             // Carga inicial de datos
             cardFrontImg.innerHTML = showroomSVGs[0];
             
-            // Timeline de GSAP para animar el Showroom al scroll (Pinning)
-            const tlShowroom = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.showroom-pin-container',
-                    start: 'top top',
-                    end: '+=250%', // Cuánto scroll se requiere para ver todo
-                    pin: true,     // Congela la pantalla
-                    scrub: 1.0,    // Se acopla al scroll de forma fluida
-                    onUpdate: (self) => {
-                        const progress = self.progress; // De 0.0 a 1.0
-                        let activeIndex = 0;
+            // Usamos gsap.matchMedia para adaptar el comportamiento según tamaño de pantalla
+            let mm = gsap.matchMedia();
 
-                        if (progress < 0.33) {
-                            activeIndex = 0;
-                        } else if (progress < 0.66) {
-                            activeIndex = 1;
-                        } else {
-                            activeIndex = 2;
+            // 1. ESCRITORIO (> 1024px): Efecto Pinned con ScrollTrigger
+            mm.add("(min-width: 1025px)", () => {
+                const tlShowroom = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.showroom-pin-container',
+                        start: 'top top',
+                        end: '+=250%',
+                        pin: true,
+                        scrub: 1.0,
+                        onUpdate: (self) => {
+                            const progress = self.progress;
+                            let activeIndex = 0;
+
+                            if (progress < 0.33) {
+                                activeIndex = 0;
+                            } else if (progress < 0.66) {
+                                activeIndex = 1;
+                            } else {
+                                activeIndex = 2;
+                            }
+
+                            document.querySelectorAll('.showroom-slide-text').forEach((slide, index) => {
+                                if (index === activeIndex) {
+                                    slide.classList.add('active');
+                                } else {
+                                    slide.classList.remove('active');
+                                }
+                            });
+
+                            document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
+                                if (index === activeIndex) {
+                                    dot.classList.add('active');
+                                } else {
+                                    dot.classList.remove('active');
+                                }
+                            });
                         }
-
-                        // Actualizar textos dinámicamente en el lateral izquierdo
-                        document.querySelectorAll('.showroom-slide-text').forEach((slide, index) => {
-                            if (index === activeIndex) {
-                                slide.classList.add('active');
-                            } else {
-                                slide.classList.remove('active');
-                            }
-                        });
-
-                        // Actualizar indicadores (dots)
-                        document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
-                            if (index === activeIndex) {
-                                dot.classList.add('active');
-                            } else {
-                                dot.classList.remove('active');
-                            }
-                        });
                     }
-                }
+                });
+
+                tlShowroom.to(rotatingCard, {
+                    rotateY: 180,
+                    duration: 1.0,
+                    ease: 'none',
+                    onStart: () => {
+                        cardFrontCategory.innerText = slideData[0].category;
+                        cardFrontTitle.innerText = slideData[0].title;
+                        cardBackTitle.innerText = slideData[0].backTitle;
+                        statVets.innerText = slideData[0].vets;
+                        statAcred.innerText = slideData[0].acred;
+                        statTime.innerText = slideData[0].time;
+                    }
+                });
+
+                tlShowroom.to(rotatingCard, {
+                    rotateY: 360,
+                    duration: 1.0,
+                    ease: 'none',
+                    onStart: () => {
+                        cardFrontImg.innerHTML = showroomSVGs[1];
+                        cardFrontCategory.innerText = slideData[1].category;
+                        cardFrontTitle.innerText = slideData[1].title;
+                        cardBackTitle.innerText = slideData[1].backTitle;
+                        statVets.innerText = slideData[1].vets;
+                        statAcred.innerText = slideData[1].acred;
+                        statTime.innerText = slideData[1].time;
+                    }
+                });
+
+                tlShowroom.to(rotatingCard, {
+                    rotateY: 540,
+                    duration: 1.0,
+                    ease: 'none',
+                    onStart: () => {
+                        cardFrontImg.innerHTML = showroomSVGs[2];
+                        cardFrontCategory.innerText = slideData[2].category;
+                        cardFrontTitle.innerText = slideData[2].title;
+                        cardBackTitle.innerText = slideData[2].backTitle;
+                        statVets.innerText = slideData[2].vets;
+                        statAcred.innerText = slideData[2].acred;
+                        statTime.innerText = slideData[2].time;
+                    }
+                });
             });
 
-            // Animación: Rotar la tarjeta y cambiar su contenido
-            // Slide 1 (Cardiología): Rotación de 0 a 180 (Muestra dorso)
-            tlShowroom.to(rotatingCard, {
-                rotateY: 180,
-                duration: 1.0,
-                ease: 'none',
-                onStart: () => {
-                    // Cargar contenido de Cardiología
-                    cardFrontCategory.innerText = slideData[0].category;
-                    cardFrontTitle.innerText = slideData[0].title;
-                    cardBackTitle.innerText = slideData[0].backTitle;
-                    statVets.innerText = slideData[0].vets;
-                    statAcred.innerText = slideData[0].acred;
-                    statTime.innerText = slideData[0].time;
-                }
-            });
+            // 2. MÓVIL/TABLET (<= 1024px): Carrusel Cíclico Automático con Tap-to-Flip
+            mm.add("(max-width: 1024px)", () => {
+                let activeIndex = 0;
+                let isFlipped = false;
+                
+                // Función para actualizar el contenido de la tarjeta
+                const updateCardContent = (index) => {
+                    cardFrontImg.innerHTML = showroomSVGs[index];
+                    cardFrontCategory.innerText = slideData[index].category;
+                    cardFrontTitle.innerText = slideData[index].title;
+                    cardBackTitle.innerText = slideData[index].backTitle;
+                    statVets.innerText = slideData[index].vets;
+                    statAcred.innerText = slideData[index].acred;
+                    statTime.innerText = slideData[index].time;
+                };
 
-            // Transición a Slide 2 (Diagnóstico Digital): Rotar de 180 a 360 (Vuelve a mostrar frente)
-            tlShowroom.to(rotatingCard, {
-                rotateY: 360,
-                duration: 1.0,
-                ease: 'none',
-                onStart: () => {
-                    // Actualizar contenido a Diagnóstico Digital
-                    cardFrontImg.innerHTML = showroomSVGs[1];
-                    cardFrontCategory.innerText = slideData[1].category;
-                    cardFrontTitle.innerText = slideData[1].title;
-                    cardBackTitle.innerText = slideData[1].backTitle;
-                    statVets.innerText = slideData[1].vets;
-                    statAcred.innerText = slideData[1].acred;
-                    statTime.innerText = slideData[1].time;
-                }
-            });
+                // Ciclo automático sutil
+                const autoCycle = () => {
+                    // Voltear la tarjeta a 180 (o 360 si ya está volteada) y cambiar de cara
+                    gsap.to(rotatingCard, {
+                        rotateY: isFlipped ? 360 : 180,
+                        duration: 0.6,
+                        onComplete: () => {
+                            isFlipped = !isFlipped;
+                            activeIndex = (activeIndex + 1) % 3;
+                            updateCardContent(activeIndex);
+                            
+                            // Volver a la cara frontal
+                            gsap.to(rotatingCard, {
+                                rotateY: isFlipped ? 180 : 0,
+                                duration: 0.6
+                            });
+                        }
+                    });
+                };
+                
+                let cycleInterval = setInterval(autoCycle, 4000);
 
-            // Transición a Slide 3 (Guardia): Rotar de 360 a 540 (Muestra dorso)
-            tlShowroom.to(rotatingCard, {
-                rotateY: 540,
-                duration: 1.0,
-                ease: 'none',
-                onStart: () => {
-                    // Actualizar contenido a Guardia
-                    cardFrontImg.innerHTML = showroomSVGs[2];
-                    cardFrontCategory.innerText = slideData[2].category;
-                    cardFrontTitle.innerText = slideData[2].title;
-                    cardBackTitle.innerText = slideData[2].backTitle;
-                    statVets.innerText = slideData[2].vets;
-                    statAcred.innerText = slideData[2].acred;
-                    statTime.innerText = slideData[2].time;
-                }
+                // Tap manual para voltear
+                const handleTap = () => {
+                    // Detener el ciclo automático para que el usuario pueda leer
+                    clearInterval(cycleInterval);
+                    isFlipped = !isFlipped;
+                    gsap.to(rotatingCard, {
+                        rotateY: isFlipped ? 180 : 0,
+                        duration: 0.6,
+                        ease: 'power2.out'
+                    });
+                };
+
+                rotatingCard.addEventListener('click', handleTap);
+
+                // Cleanup al cambiar de breakpoint
+                return () => {
+                    clearInterval(cycleInterval);
+                    rotatingCard.removeEventListener('click', handleTap);
+                    gsap.set(rotatingCard, { clearProps: "all" });
+                };
             });
 
         } catch (err) {
@@ -510,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Re-iniciar Lucide icons en las tareas
-        lucide.createIcons();
+        safeCreateIcons();
     }
 
     function updateBadgeUI(name, type, age, breed, code) {
@@ -526,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             badgePhoto.innerHTML = `<i data-lucide="shield-alert" style="width:70px;height:70px;color:rgba(255,255,255,0.85)"></i>`;
         }
-        lucide.createIcons();
+        safeCreateIcons();
 
         // Mostrar Panel de Salud
         healthPetName.innerText = name;
@@ -825,7 +892,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.toggle('open');
             const isOpen = navMenu.classList.contains('open');
             menuToggle.innerHTML = `<i data-lucide="${isOpen ? 'x' : 'menu'}" style="width:24px;height:24px;"></i>`;
-            lucide.createIcons();
+            safeCreateIcons();
         });
         
         // Cerrar menú al hacer clic en un enlace de sección
@@ -833,7 +900,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('open');
                 menuToggle.innerHTML = `<i data-lucide="menu" style="width:24px;height:24px;"></i>`;
-                lucide.createIcons();
+                safeCreateIcons();
             });
         });
     }

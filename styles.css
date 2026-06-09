@@ -1848,6 +1848,7 @@ button {
     }
     
     .showroom-info-panel {
+        display: block;
         height: auto;
     }
     
@@ -1861,6 +1862,12 @@ button {
     
     .showroom-slide-text:last-child {
         margin-bottom: 0;
+    }
+    
+    .showroom-3d-card-wrapper {
+        width: 300px;
+        height: 400px;
+        margin: 0 auto;
     }
     
     .reviews-grid, .team-grid {
