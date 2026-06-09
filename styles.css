@@ -533,7 +533,7 @@ button {
 }
 
 .carousel-card-info {
-    padding: 16px;
+    padding: 16px 16px 60px;
     background: var(--color-white);
     flex-grow: 1;
     display: flex;
@@ -560,10 +560,16 @@ button {
 /* Controles del carrusel */
 .carousel-nav-controls {
     position: absolute;
-    bottom: 0px;
+    bottom: 12px;
     display: flex;
-    gap: 16px;
+    gap: 12px;
     z-index: 10;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-btn {
