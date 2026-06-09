@@ -2001,19 +2001,40 @@ button {
         justify-content: center;
         flex-wrap: wrap;
         gap: 16px;
+        position: relative;
+        z-index: 5;
     }
 
     .hero-tag {
         margin-bottom: 16px;
     }
 
+    /* Carrusel: columna vertical, flechas debajo del card, sin overflow */
     .hero-carousel-wrapper {
-        height: 340px;
+        height: auto;
+        min-height: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        overflow: hidden;
+        padding: 12px 0 0;
+        gap: 0;
+    }
+
+    .carousel-3d-scene {
+        flex-shrink: 0;
+    }
+
+    /* Flechas fuera del card, centradas debajo */
+    .carousel-nav-controls {
+        position: static;
+        margin: 14px auto 0;
+        align-self: center;
     }
 
     /* === QUICK ACTIONS === */
     .quick-actions-section {
-        margin-top: -20px;
+        margin-top: 28px;
     }
 
     .quick-actions-grid {
@@ -2245,7 +2266,8 @@ button {
 
     /* === CAROUSEL === */
     .hero-carousel-wrapper {
-        height: 300px;
+        height: auto;
+        padding: 8px 0 0;
     }
 
     .carousel-3d-card {
@@ -2254,7 +2276,7 @@ button {
 
     /* === QUICK ACTIONS === */
     .quick-actions-section {
-        margin-top: -10px;
+        margin-top: 24px;
     }
 
     .quick-card {
